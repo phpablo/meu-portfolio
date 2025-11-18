@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pablo Henrique • Front‑End Wizard</title>
+    <meta name="description" content="Portfólio moderno, dinâmico e minimalista de tecnologia + Harry Potter. HTML, CSS, JS e PHP com foco em acessibilidade e clean code." />
+    <meta property="og:title" content="Pablo Henrique • Front‑End Wizard" />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Cinzel:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo" aria-label="Pablo Henrique">
+        <img src="LogoSecundaria.png" alt="Logo Pablo Henrique" />
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#hero">Início</a>
+        <a href="#perfil">Perfil</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#redes">Redes</a>
+        <a href="#contato" class="cta">Contato</a>
+      </nav>
+      <button id="theme-toggle" class="theme" aria-label="Alternar tema" aria-pressed="false">🌙</button>
+      <button id="menu-toggle" class="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </header>
+
+    <section id="hero" class="hero full">
+      <div class="fx-layer" id="fx-layer" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h1 class="title"><span class="hp">Front‑End</span> Wizard</h1>
+          <p class="subtitle">Tecnologia com um toque de magia, com código limpo, acessível e performático.</p>
+          <div class="actions">
+            <a class="btn primary" href="#servicos">Serviços</a>
+            <a class="btn" href="#projetos">Projetos</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="eu-front-end-day.jpg" alt="Pablo Henrique" />
+        </div>
+      </div>
+    </section>
+
+    <section id="perfil" class="section profile">
+      <div class="profile-wrap">
+        <img class="avatar" src="eu-front-end-day.jpg" alt="Foto oficial de Pablo Henrique Araújo" />
+        <div class="profile-text">
+          <h2 class="section-title">Pablo Henrique Araújo</h2>
+          <p>Desenvolvedor Front‑End focado em HTML, CSS, JavaScript e PHP, aplicando boas práticas, acessibilidade e performance. Empolgado com Laravel e PostgreSQL, cursando ADS (UFCA) e Engenharia de Software (Descomplica).</p>
+          <div class="chips">
+            <span class="chip">HTML/CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">PHP OOP</span>
+            <span class="chip">Git/GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="section services">
+      <h2 class="section-title">Serviços</h2>
+      <div class="cards">
+        <article class="card tilt">
+          <div class="icon">💻</div>
+          <h3>HTML/CSS</h3>
+          <p>Montagem fiel de interfaces, semântica, responsividade e detalhes de interação.</p>
+        </article>
+        <article class="card tilt">
+          <div class="icon">⚙️</div>
+          <h3>JavaScript</h3>
+          <p>Interações modernas, animações eficientes e boas práticas de performance.</p>
+        </article>
+        <article class="card tilt">
+          <div class="icon">🐘</div>
+          <h3>PHP</h3>
+          <p>Integrações com MySQL, POO e organização de código seguindo padrões.</p>
+        </article>
+        <article class="card tilt">
+          <div class="icon">🔎</div>
+          <h3>SEO</h3>
+          <p>Estrutura semântica, metadados, acessibilidade e conteúdo claro para buscadores.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projetos" class="section projects">
+      <h2 class="section-title">Projetos</h2>
+      <div class="grid">
+        <article class="project tilt" data-category="web">
+          <div class="thumb"></div>
+          <div class="project-body">
+            <h3>Facilita Imóveis</h3>
+            <p>Interfaces administrativas com PHP e JS, melhoria contínua e testes.</p>
+            <a class="btn small" href="https://github.com/phpablo" target="_blank" rel="noopener">Ver código</a>
+          </div>
+        </article>
+        <article class="project tilt" data-category="dataviz">
+          <div class="thumb alt"></div>
+          <div class="project-body">
+            <h3>Modelagem & Dashboards</h3>
+            <p>Estudos com PostgreSQL e Python para visualização e ER.</p>
+            <a class="btn small" href="https://github.com/phpablo" target="_blank" rel="noopener">Ver estudos</a>
+          </div>
+        </article>
+        <article class="project tilt" data-category="web">
+          <div class="thumb"></div>
+          <div class="project-body">
+            <h3>Sites & Copy</h3>
+            <p>Criação de sites institucionais e identidade visual para campanhas.</p>
+            <a class="btn small" href="https://github.com/phpablo" target="_blank" rel="noopener">Portfólio</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="redes" class="section social-section">
+      <h2 class="section-title">Minhas Redes</h2>
+      <div class="social-grid">
+        <a class="social-card" href="https://www.instagram.com/pablohenrique.dev/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.4 0 2.7 0 3.7.1 1 .1 1.6.2 2 .4.5.2.8.5 1.2.9.4.4.7.7.9 1.2.2.4.3 1 .4 2 .1 1 .1 1.3.1 3.7s0 2.7-.1 3.7c-.1 1-.2 1.6-.4 2-.2.5-.5.8-.9 1.2-.4.4-.7.7-1.2.9-.4.2-1 .3-2 .4-1 .1-1.3.1-3.7.1s-2.7 0-3.7-.1c-1-.1-1.6-.2-2-.4-.5-.2-.8-.5-1.2-.9-.4-.4-.7-.7-.9-1.2-.2-.4-.3-1-.4-2C2 14.7 2 14.4 2 12s0-2.7.1-3.7c.1-1 .2-1.6.4-2 .2-.5.5-.8.9-1.2.4-.4.7-.7 1.2-.9.4-.2 1-.3 2-.4C9.3 2 9.6 2 12 2zm0 3.2c-2.3 0-2.5 0-3.3.1-.8.1-1.2.2-1.5.4-.4.1-.6.3-.9.6-.3.3-.5.5-.6.9-.2.3-.3.7-.4 1.5-.1.8-.1 1-.1 3.3s0 2.5.1 3.3c.1.8.2 1.2.4 1.5.1.4.3.6.6.9.3.3.5.5.9.6.3.2.7.3 1.5.4.8.1 1 .1 3.3.1s2.5 0 3.3-.1c.8-.1 1.2-.2 1.5-.4.4-.1.6-.3.9-.6.3-.3.5-.5.6-.9.2-.3.3-.7.4-1.5.1-.8.1-1 .1-3.3s0-2.5-.1-3.3c-.1-.8-.2-1.2-.4-1.5-.1-.4-.3-.6-.6-.9-.3-.3-.5-.5-.9-.6-.3-.2-.7-.3-1.5-.4-.8-.1-1-.1-3.3-.1zm0 3.3a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7zm5-1.2a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" fill="currentColor"/></svg>
+          <span>@pablohenrique.dev</span>
+        </a>
+        <a class="social-card" href="https://github.com/phpablo" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2.2c-3.4.7-4.1-1.6-4.1-1.6-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.7 2 2.6 2 .9-.6 1.7-.8 2.1-.7.1-.7.4-1.3.8-1.6-2.7-.3-5.6-1.4-5.6-6.1 0-1.3.5-2.4 1.2-3.3-.1-.3-.6-1.6.1-3.3 0 0 1-.3 3.4 1.2a11.6 11.6 0 0 1 6.1 0c2.4-1.5 3.4-1.2 3.4-1.2.7 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.7-2.9 5.8-5.6 6.1.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z" fill="currentColor"/></svg>
+          <span>github.com/phpablo</span>
+        </a>
+        <a class="social-card" href="https://www.linkedin.com/in/pablohenriquearaujo/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 8.98h3.96V21H3V8.98zm7.5 0h3.79v1.64h.05c.53-.96 1.82-1.97 3.75-1.97 4 0 4.74 2.63 4.74 6.05V21H19.9v-5.33c0-1.27-.02-2.91-1.77-2.91-1.77 0-2.04 1.38-2.04 2.81V21h-3.96V8.98z" fill="currentColor"/></svg>
+          <span>linkedin.com/in/pablohenriquearaujo</span>
+        </a>
+        <a class="social-card" href="mailto:pablohlaraujo@gmail.com" aria-label="Email">
+          <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6.5c0-1 1-1.9 2.3-1.9h15.4c1.3 0 2.3.9 2.3 1.9v10.9c0 1-1 1.9-2.3 1.9H4.3c-1.3 0-2.3-.9-2.3-1.9V6.5zm2.6 0 7.4 5.5 7.4-5.5H4.6z" fill="currentColor"/></svg>
+          <span>pablohlaraujo@gmail.com</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="contato" class="section contact">
+      <h2 class="section-title">Contato</h2>
+      <form id="contact-form" class="form" novalidate>
+        <div class="field">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field full">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        </div>
+        <button class="btn primary" type="submit">Enviar</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Pablo Henrique. Feito com magia e JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
