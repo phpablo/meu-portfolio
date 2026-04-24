@@ -1,6 +1,7 @@
 # Claude Code
 .claude/
 .playwright-mcp/
+CLAUDE.md
 
 # OS
 .DS_Store
