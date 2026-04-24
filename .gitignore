@@ -1,0 +1,29 @@
+# Claude Code
+.claude/
+.playwright-mcp/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies (se usar Node futuramente)
+node_modules/
+
+# Build
+dist/
+build/
+
+# Env
+.env
+.env.local
