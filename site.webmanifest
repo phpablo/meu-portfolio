@@ -1,0 +1,21 @@
+{
+  "name": "Pablo Henrique — Desenvolvedor Front-End",
+  "short_name": "Pablo Henrique",
+  "description": "Portfólio de Pablo Henrique Araújo, Desenvolvedor Front-End especialista em HTML, CSS, JavaScript e PHP.",
+  "start_url": "/meu-portfolio/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "assets/img/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
