@@ -650,9 +650,17 @@ strong { font-weight: 700; }
 
 .project-card__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+.project-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
 }
 
 .project-card__badge {
@@ -664,6 +672,49 @@ strong { font-weight: 700; }
   background: rgba(230, 62, 33, 0.1);
   padding: 4px 12px;
   border-radius: 50px;
+}
+
+/* "Cliente / Em produção" highlight badge */
+.project-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  background: var(--c-accent);
+  padding: 4px 12px 4px 10px;
+  border-radius: 50px;
+}
+
+.project-card__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+  animation: status-pulse 2s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55); }
+  70%  { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__status-dot { animation: none; }
+}
+
+/* Subtle accent emphasis for live client projects */
+.project-card--live {
+  border-color: rgba(230, 62, 33, 0.22);
+}
+
+.project-card--live:hover {
+  border-color: var(--c-accent);
 }
 
 .project-card__links-group {
@@ -933,6 +984,8 @@ strong { font-weight: 700; }
 .services__grid   .reveal:nth-child(4),
 .projects__grid   .reveal:nth-child(4),
 .skills__grid     .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+.projects__grid   .reveal:nth-child(5) { transition-delay: 0.4s; }
 
 
 /* ----------------------------------------------------------
