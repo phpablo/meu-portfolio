@@ -73,6 +73,12 @@ ul { list-style: none; }
 
 strong { font-weight: 700; }
 
+:focus-visible {
+  outline: 2px solid var(--c-accent-h);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 /* Screen-reader only */
 .sr-only {
   position: absolute;
@@ -705,7 +711,14 @@ strong { font-weight: 700; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   .project-card__status-dot { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 /* Subtle accent emphasis for live client projects */
@@ -810,14 +823,14 @@ strong { font-weight: 700; }
 }
 
 .skill__badge--mid {
-  background: rgba(99, 211, 163, 0.12);
+  background: rgba(230, 62, 33, 0.12);
   color: var(--c-accent);
-  border: 1px solid rgba(99, 211, 163, 0.25);
+  border: 1px solid rgba(230, 62, 33, 0.28);
 }
 
 .skill__badge--jun {
   background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -961,13 +974,13 @@ strong { font-weight: 700; }
 /* ----------------------------------------------------------
    14. SCROLL REVEAL ANIMATION
    ---------------------------------------------------------- */
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
