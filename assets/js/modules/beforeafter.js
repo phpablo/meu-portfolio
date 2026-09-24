@@ -164,9 +164,13 @@ function createComparator(root) {
     });
     if (focus) tab.focus();
     if (panel) panel.setAttribute('aria-labelledby', tab.id);
-    if (before.dataset.current === tab.dataset.baTab) return;
-
+    // incrementa antes da checagem: cancela uma troca pendente (A→B→A rápido)
     const token = ++switchToken;
+    if (before.dataset.current === tab.dataset.baTab) {
+      root.classList.remove("is-switching");
+      return;
+    }
+
     root.classList.add('is-switching');
     await Promise.all([loadPair(tab), wait(reduceMotion.matches ? 0 : 180)]);
     if (token !== switchToken) return;

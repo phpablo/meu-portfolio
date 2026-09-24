@@ -29,3 +29,9 @@ build/
 .env
 .env.local
 figma
+
+# Imagens originais (fonte das versões otimizadas; podem conter dados pessoais)
+assets/img/modelo/
+assets/img/logos/
+assets/img/ia/
+assets/img/projeto-*/

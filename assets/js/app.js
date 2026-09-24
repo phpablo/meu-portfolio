@@ -11,23 +11,27 @@ import { initPortfolio } from './modules/portfolio.js';
 import { initBeforeAfter } from './modules/beforeafter.js';
 import { initSpotlight } from './modules/spotlight.js';
 
+// Um módulo com erro não pode derrubar os demais
+function safe(fn, name) {
+  try { fn(); } catch (err) { console.error(`[init] ${name}:`, err); }
+}
+
 function init() {
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  initNav();
-  initReveal();
-  initCarousels();
-  initTimelines();
-  initCounters();
-  initPortfolio();   // depois do carrossel (usa a API dele)
-  initBeforeAfter();
-  initSpotlight();
+  // reveal primeiro: é ele que torna o conteúdo visível
+  safe(initReveal, 'reveal');
+  safe(initNav, 'nav');
+  safe(initCarousels, 'carousel');
+  safe(initTimelines, 'timeline');
+  safe(initCounters, 'counter');
+  safe(initPortfolio, 'portfolio');   // depois do carrossel (usa a API dele)
+  safe(initBeforeAfter, 'beforeafter');
+  safe(initSpotlight, 'spotlight');
 
-  // Formulário de contato (Web3Forms com fallback mailto)
-  if (document.getElementById('contactForm')) {
-    import('./modules/contact.js').then((m) => m.initContact());
-  }
+  // sinaliza ao failsafe do <head> que o JS carregou
+  window.__appReady = true;
 }
 
 if (document.readyState === 'loading') {

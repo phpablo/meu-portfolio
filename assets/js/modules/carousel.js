@@ -281,7 +281,7 @@ function createCarousel(root) {
     goToSlide(slide, { instant = false } = {}) {
       const i = stops.findIndex((s) => slides[s.index] === slide);
       if (i === -1) return;
-      track.scrollTo({ left: stops[i].left, behavior: instant ? 'auto' : behavior() });
+      track.scrollTo({ left: stops[i].left, behavior: instant ? 'instant' : behavior() });
     },
   };
 }

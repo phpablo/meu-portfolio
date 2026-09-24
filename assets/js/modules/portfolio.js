@@ -62,7 +62,7 @@ export function initPortfolio(root = document) {
         const cats = slide.dataset.categories.split(/\s+/);
         slide.hidden = value !== 'todos' && !cats.includes(value);
       });
-      carouselEl.querySelector('[data-carousel-track]').scrollTo({ left: 0, behavior: 'auto' });
+      carouselEl.querySelector('[data-carousel-track]').scrollTo({ left: 0, behavior: 'instant' });
       carousel?.refresh();
       showDetail(slides.find((s) => !s.hidden));
       list.classList.remove('is-filtering');
