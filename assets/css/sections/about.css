@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Sobre: "Por que me contratar?" (foto recortada saindo da forma + números)
+   ========================================================================== */
+
+.about {
+  --inset: clamp(8px, 1.4vw, 20px);
+  margin-inline: var(--inset);
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+  border-radius: clamp(24px, 3vw, 40px);
+  background: var(--surface-soft);
+  overflow: hidden;
+  scroll-margin-top: calc(var(--nav-h) + var(--nav-top) + 8px);
+}
+
+.about__inner {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+/* ---------- Foto ---------- */
+.about__media {
+  position: relative;
+  justify-self: center;
+}
+
+.about__figure {
+  --fig-w: clamp(260px, 31vw, 440px);
+  --r: calc(var(--fig-w) * 0.27);
+  position: relative;
+  width: var(--fig-w);
+}
+
+/* Forma laranja clara atrás; a cabeça "sai" pelo topo */
+.about__shape {
+  position: absolute;
+  inset: 21% 0 0;
+  border-radius: var(--r);
+  background: var(--orange-light);
+  box-shadow: inset 0 -30px 60px -30px rgb(242 107 29 / 0.35);
+}
+
+.about__photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 720 / 1200;
+  /* Recorta só a base, acompanhando os cantos inferiores da forma */
+  clip-path: inset(0 round 0 0 var(--r) var(--r));
+}
+
+.about__doodle {
+  width: clamp(48px, 5vw, 72px);
+  height: clamp(48px, 5vw, 72px);
+  top: 14%;
+  right: calc(100% - 12px);
+  transform: scaleX(-1) rotate(8deg);
+}
+
+/* ---------- Conteúdo ---------- */
+.about__title { color: var(--ink-800); }
+/* Sobre o fundo #F2F4F7 o laranja precisa ser um pouco mais escuro (3,6:1, AA texto grande) */
+.about { --accent-text: #D9560F; }
+
+.about__text {
+  margin-top: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: 34rem;
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  color: var(--ink-600);
+}
+
+.about__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+  max-width: 36rem;
+}
+
+/* Número acima do rótulo (dd vem depois do dt no HTML) */
+.stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.stat__value {
+  margin: 0;
+  font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-900);
+}
+
+.stat__label {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+  color: var(--ink-600);
+}
+
+.about__cta {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  min-height: 64px;
+  padding: 0.8em 2.1em;
+  border-radius: var(--radius-lg);
+  font-size: clamp(1.1875rem, 1rem + 0.7vw, 1.5rem);
+  font-weight: var(--fw-semibold);
+  background: transparent;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767.98px) {
+  .about__figure { --fig-w: min(252px, 72vw); }
+  .about__doodle { width: 44px; height: 44px; }
+  .about__stats { gap: var(--space-5) var(--space-4); }
+  .stat__label { font-size: 0.9375rem; }
+  .about__cta { width: 100%; }
+}

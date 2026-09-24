@@ -1,0 +1,223 @@
+/* ==========================================================================
+   Antes × Depois: comparador com abas de projeto
+   ========================================================================== */
+
+.ba-section {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgb(254 178 115 / 0.16), transparent 70%),
+    var(--surface);
+  scroll-margin-top: calc(var(--nav-h) + var(--nav-top));
+}
+
+.ba-section__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.ba-section__tag { font-weight: var(--fw-semibold); }
+
+.ba-section__intro {
+  max-width: 34rem;
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--ink-600);
+}
+
+.ba {
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+/* ---------- Abas ---------- */
+.ba__tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.ba__tab {
+  flex: none;
+  min-height: 44px;
+  padding: 0.5em 1.35em;
+  border-radius: var(--radius-pill);
+  border: 1px solid #D0D5DD;
+  background: var(--surface);
+  color: var(--ink-800);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+.ba__tab:hover { border-color: var(--ink-800); }
+.ba__tab[aria-selected="true"] {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--white);
+}
+
+/* ---------- Moldura (navegador falso) ---------- */
+.ba__frame {
+  border-radius: var(--radius-lg);
+  background: var(--black);
+  box-shadow:
+    0 1px 2px rgb(16 24 40 / 0.08),
+    0 30px 60px -30px rgb(16 24 40 / 0.45);
+  overflow: hidden;
+}
+
+.ba__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 40px;
+  padding-inline: 16px;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.ba__dots { display: inline-flex; gap: 6px; }
+.ba__dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3a3a3a;
+}
+.ba__dots i:first-child { background: var(--orange); }
+
+.ba__address {
+  flex: 1;
+  max-width: 26rem;
+  margin-inline: auto;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.08);
+  font-size: 0.8125rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: translateX(-26px); /* compensa os pontos para centralizar */
+}
+
+/* ---------- Palco ---------- */
+.ba__stage {
+  --pos: 50%;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--surface-soft);
+  overflow: hidden;
+  cursor: ew-resize;
+  touch-action: pan-y;       /* rolagem vertical continua funcionando no celular */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ba__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.ba__img--after { clip-path: inset(0 0 0 var(--pos)); }
+
+.ba.is-switching .ba__img { opacity: 0; }
+
+/* Rótulos */
+.ba__label {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgb(23 23 23 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.35);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) ease;
+}
+.ba__label--before { left: 14px; }
+.ba__label--after  { right: 14px; }
+
+/* Divisor + alça */
+.ba__divider {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  translate: -50% 0;
+  background: var(--white);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08), 0 0 16px rgb(0 0 0 / 0.25);
+  pointer-events: none;
+}
+
+.ba__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink-900);
+  box-shadow: 0 0 0 4px var(--orange), 0 8px 24px rgb(0 0 0 / 0.3);
+  transition: scale var(--dur-fast) var(--ease-out);
+}
+.ba__handle svg { width: 26px; height: 26px; }
+
+.ba__stage.is-dragging .ba__handle { scale: 1.08; }
+
+/* Range acessível: invisível, mas focável; o foco aparece na alça */
+.ba__range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+.ba__range:focus-visible ~ .ba__divider .ba__handle {
+  box-shadow: 0 0 0 4px var(--orange), 0 0 0 8px rgb(253 133 58 / 0.35), 0 8px 24px rgb(0 0 0 / 0.3);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767.98px) {
+  .ba__tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 4px var(--gutter);
+    scrollbar-width: none;
+  }
+  .ba__tabs::-webkit-scrollbar { display: none; }
+
+  .ba__frame { border-radius: var(--radius-md); }
+  .ba__bar { height: 32px; padding-inline: 12px; }
+  .ba__address { font-size: 0.75rem; transform: none; }
+  .ba__handle { width: 48px; height: 48px; }
+  .ba__handle svg { width: 22px; height: 22px; }
+  .ba__label { top: 10px; padding: 4px 10px; font-size: 0.75rem; }
+  .ba__label--before { left: 10px; }
+  .ba__label--after  { right: 10px; }
+}

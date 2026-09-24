@@ -1,0 +1,270 @@
+/* ==========================================================================
+   Componentes — botões, tags, títulos de seção, doodles
+   ========================================================================== */
+
+/* Botões (pílula) */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink-900);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.7em 1.5em;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1.1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition:
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) ease;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+
+.btn__icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.btn:hover .btn__icon { transform: translate(2px, -2px); }
+
+/* Primário: laranja forte + texto branco em negrito (>= 19px => AA texto grande) */
+.btn--primary {
+  --btn-bg: var(--orange-strong);
+  --btn-fg: var(--white);
+  font-size: max(1.1875rem, var(--fs-md));
+  font-weight: var(--fw-bold);
+  box-shadow: 0 8px 20px -8px rgb(242 107 29 / 0.7);
+}
+.btn--primary:hover { --btn-bg: #E35F12; }
+
+/* Fantasma escuro sobre fundos claros/vidro */
+.btn--ghost {
+  --btn-fg: var(--ink-900);
+}
+.btn--ghost:hover { --btn-bg: rgb(255 255 255 / 0.55); }
+
+/* Contorno */
+.btn--outline {
+  border-color: var(--ink-900);
+}
+.btn--outline:hover { --btn-bg: var(--ink-900); --btn-fg: var(--white); }
+
+/* Grupo de botões em vidro */
+.btn-group-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  box-shadow: 0 10px 30px -12px rgb(16 24 40 / 0.35);
+}
+
+/* Tags / pílulas */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.4em 1.1em;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  color: var(--ink-900);
+}
+.tag--outline { border: 1px solid var(--ink-900); background: var(--surface); }
+
+/* Títulos de seção com palavra destacada */
+.section-heading {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-semibold);
+  color: var(--ink-800);
+}
+.section-heading .hl { color: var(--accent-text); }
+.on-dark .section-heading,
+.section-heading--light { color: var(--white); }
+.on-dark { --accent-text: var(--orange); }
+
+/* Doodles (traços desenhados à mão) */
+.doodle {
+  position: absolute;
+  pointer-events: none;
+  color: var(--orange);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Carrossel genérico (scroll-snap nativo), ver assets/js/modules/carousel.js
+   Colunas visíveis: --per-view e --gap no .carousel */
+.carousel {
+  --per-view: 1;
+  --gap: 24px;
+  --edge: var(--gutter);
+}
+
+.carousel__viewport {
+  position: relative;
+  margin-inline: calc(var(--edge) * -1);
+  padding-inline: var(--edge);
+  scroll-padding-inline: var(--edge);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  container-type: inline-size;
+}
+.carousel__viewport::-webkit-scrollbar { display: none; }
+
+.carousel__viewport:focus-visible {
+  outline-offset: -3px;
+  border-radius: var(--radius-lg);
+}
+
+.carousel__viewport.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  cursor: grabbing;
+  user-select: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .carousel__viewport { cursor: grab; }
+}
+
+.carousel__list {
+  display: grid;
+  grid-auto-flow: column;
+  /* cqw = largura visível do viewport; a lista cresce com os itens para o padding final contar */
+  grid-auto-columns: calc((100cqw - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+  width: max-content;
+  gap: var(--gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel__list > * {
+  scroll-snap-align: start;
+  min-width: 0;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+.carousel__dots[hidden] { display: none; }
+
+/* Área de toque de 28px, desenho visual de 14px */
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  transition: width var(--dur) var(--ease-out);
+}
+.carousel__dot::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  transition: width var(--dur) var(--ease-out), background-color var(--dur) ease;
+}
+.carousel__dot.is-active { width: 68px; }
+.carousel__dot.is-active::before { width: 60px; background: var(--orange); }
+
+/* Textura escura reutilizável (seda + blobs laranja): Serviços, Depoimentos.
+   Uso: <div class="texture" aria-hidden="true"> <svg class="texture__silk"> + <span class="texture__blob">
+   A seção pai precisa de position: relative, isolation: isolate e overflow: hidden. */
+.texture,
+.services__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(90% 70% at 20% 0%, rgb(255 255 255 / 0.06), transparent 60%),
+    radial-gradient(70% 60% at 100% 100%, rgb(242 107 29 / 0.10), transparent 70%),
+    linear-gradient(160deg, #1c1c1c 0%, #121212 55%, #0d0d0d 100%);
+}
+
+.texture__silk,
+.services__silk {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.texture__blob,
+.services__blob {
+  position: absolute;
+  display: block;
+  border-radius: 46% 54% 38% 62% / 52% 38% 62% 48%;
+  background:
+    radial-gradient(circle at 32% 28%, #FFE1C2 0%, rgb(255 225 194 / 0) 34%),
+    radial-gradient(circle at 70% 75%, #E0530B 0%, rgb(224 83 11 / 0) 55%),
+    linear-gradient(135deg, #FEB273 0%, #FD853A 50%, #F26B1D 100%);
+  filter: blur(var(--blur, 14px));
+  opacity: var(--alpha, 0.9);
+  animation: texture-drift var(--drift, 26s) ease-in-out infinite alternate;
+}
+
+@keyframes texture-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(12px, -18px, 0) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .texture__blob { animation: none; }
+}
+
+/* Carrossel centralizado: data-align="center" no .carousel
+   --slide: fração da largura visível ocupada pelo slide (ex.: 0.55) */
+.carousel[data-align="center"] { --edge: 0px; }
+.carousel[data-align="center"] .carousel__viewport {
+  padding-inline: 0;
+  scroll-padding-inline: 0;
+}
+.carousel[data-align="center"] .carousel__list {
+  grid-auto-columns: calc(100cqw * var(--slide, 0.86));
+  padding-inline: calc(100cqw * (1 - var(--slide, 0.86)) / 2);
+}
+.carousel[data-align="center"] .carousel__list > * { scroll-snap-align: center; }
+
+/* Botão pausar/retomar do autoplay */
+.carousel__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  color: inherit;
+  transition: background-color var(--dur-fast) ease;
+}
+.carousel__toggle[hidden] { display: none; }
+.carousel__toggle svg { width: 18px; height: 18px; }
+.carousel__toggle-play { display: none; }
+.carousel__toggle.is-paused .carousel__toggle-play { display: block; }
+.carousel__toggle.is-paused .carousel__toggle-pause { display: none; }

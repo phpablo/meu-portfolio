@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Contato: CTA direto (WhatsApp + e-mail) e faixa de confiança
+   ========================================================================== */
+
+.contact {
+  padding-block: clamp(4rem, 8vw, 6.5rem) clamp(3.5rem, 7vw, 5.5rem);
+  scroll-margin-top: calc(var(--nav-h) + var(--nav-top));
+}
+
+.contact__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact__title {
+  max-width: 24ch;
+  font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.12;
+  color: var(--ink-800);
+}
+
+/* Ícone dentro dos botões de contato */
+.contact__quick-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+.contact__quick-icon svg { width: 100%; height: 100%; }
+
+/* ---------- Faixa de confiança ---------- */
+.contact__trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) clamp(1.25rem, 5vw, 4.5rem);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--ink-800);
+}
+.contact__trust li { display: inline-flex; align-items: center; gap: 8px; }
+.contact__trust svg { width: 20px; height: 20px; flex: none; color: var(--ink-900); }
+
+@media (max-width: 699.98px) {
+  .contact__trust { flex-direction: column; align-items: center; }
+}
+
+/* ---------- CTA direto (WhatsApp + e-mail), sem formulário ---------- */
+.contact-cta {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  width: min(100%, 44rem);
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem);
+  border: 1px solid #EAECF0;
+  border-radius: 36px;
+  background: var(--surface);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 0.04), 0 24px 48px -32px rgb(16 24 40 / 0.35);
+}
+
+.contact-cta__text {
+  max-width: 34ch;
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  color: var(--ink-600);
+}
+
+.contact-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.contact-cta__btn {
+  gap: 10px;
+  min-height: 58px;
+  padding-inline: 28px;
+  font-size: var(--fs-base);
+}
+/* Branco sobre #F26B1D só passa AA como texto grande: 19px+ em negrito */
+.contact-cta__btn.btn--primary { font-size: max(1.1875rem, var(--fs-md)); }
+
+.contact-cta__mail {
+  font-size: var(--fs-sm);
+  color: var(--ink-600);
+}
+
+@media (max-width: 519.98px) {
+  .contact-cta { border-radius: 28px; }
+  .contact-cta__btn { width: 100%; justify-content: center; }
+}

@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Faixa marquee: banda laranja + faixa branca inclinadas, rolagem infinita
+   ========================================================================== */
+
+.marquee-band {
+  display: grid;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  overflow: clip;              /* bandas mais largas que a tela sem gerar rolagem */
+}
+
+.marquee {
+  grid-area: 1 / 1;
+  align-self: center;
+  width: 110vw;
+  margin-inline-start: -5vw;
+  overflow: hidden;
+}
+
+/* Banda laranja: texto na parte de baixo, livre da faixa branca */
+.marquee--orange {
+  padding-block: clamp(5.25rem, 8.6vw, 8rem) clamp(0.9rem, 1.6vw, 1.4rem);
+  background: var(--orange-strong);
+  color: var(--white);
+  rotate: -1.6deg;
+}
+
+.marquee--white {
+  position: relative;
+  padding-block: clamp(0.5rem, 1vw, 0.85rem);
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 8px 30px -12px rgb(0 0 0 / 0.35);
+  align-self: start;
+  margin-top: clamp(0.9rem, 1.6vw, 1.4rem);
+  rotate: -2.6deg;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--duration, 40s) linear infinite;
+}
+.marquee--orange .marquee__track { animation-direction: reverse; }
+
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(-100% / var(--copies, 2)), 0, 0); }
+}
+
+.marquee__list {
+  display: flex;
+  flex: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  padding-inline-end: clamp(1rem, 2vw, 1.75rem);
+  white-space: nowrap;
+  font-weight: var(--fw-medium);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.marquee--white .marquee__item { font-size: clamp(1.75rem, 1.1rem + 2.6vw, 3.25rem); }
+/* Branco em negrito sobre #F26B1D (3,05:1): contraste AA para texto grande (>= 18,66px bold) */
+.marquee--orange .marquee__item {
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+  font-weight: var(--fw-bold);
+}
+
+.marquee__star {
+  width: 0.6em;
+  height: 0.6em;
+  flex: none;
+  fill: var(--orange);
+}
+.marquee--orange .marquee__star { fill: var(--white); opacity: 0.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+}

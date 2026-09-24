@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Design tokens — portfólio phpablo
+   ========================================================================== */
+:root {
+  /* Cores de marca */
+  --orange: #FD853A;          /* primária (superfícies, doodles, texto sobre escuro) */
+  --orange-light: #FEB273;    /* semicírculo do hero, fundos suaves */
+  --orange-strong: #F26B1D;   /* superfícies com texto branco / destaque sobre claro */
+
+  /* Neutros */
+  --ink-900: #1D2939;         /* títulos fortes */
+  --ink-800: #344054;         /* títulos de seção / texto corrido */
+  --ink-400: #98A2B3;         /* texto secundário (somente decorativo sobre branco) */
+  --ink-600: #667085;         /* texto secundário acessível sobre branco */
+  --black: #171717;           /* seções escuras, navbar */
+  --surface: #FFFFFF;
+  --surface-soft: #F2F4F7;
+  --white: #FFFFFF;
+
+  /* Texto de destaque: sobre claro usa o laranja forte (AA para texto grande) */
+  --accent-text: var(--orange-strong);
+
+  /* Tipografia */
+  --font-sans: 'Urbanist', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-sm: 0.9375rem;                                   /* 15px */
+  --fs-base: 1.0625rem;                                 /* 17px */
+  --fs-md: clamp(1.0625rem, 0.98rem + 0.35vw, 1.25rem); /* 17 → 20 */
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);    /* 20 → 26 */
+  --fs-h2: clamp(2rem, 1.4rem + 2.6vw, 3.5rem);         /* 32 → 56 */
+  --fs-display: clamp(2.75rem, 1.2rem + 6.6vw, 6rem);   /* 44 → 96 */
+
+  /* Espaçamento */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* Layout */
+  --container: 1296px;
+  --gutter: 16px;
+
+  /* Raios */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 0.06), 0 1px 3px rgb(16 24 40 / 0.1);
+  --shadow-md: 0 12px 32px -8px rgb(16 24 40 / 0.28);
+
+  /* Vidro (glassmorphism) */
+  --glass-bg: rgb(255 255 255 / 0.14);
+  --glass-border: rgb(255 255 255 / 0.55);
+  --glass-blur: 12px;
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur: 320ms;
+  --dur-slow: 800ms;
+
+  /* Navbar */
+  --nav-h: 84px;
+  --nav-top: 12px;
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 32px; }
+}
+
+@media (min-width: 1200px) {
+  :root { --gutter: 72px; }
+}
+
+@media (max-width: 899.98px) {
+  :root { --nav-h: 64px; --nav-top: 10px; }
+}
